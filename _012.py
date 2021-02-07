@@ -32,3 +32,4 @@ while count_divisors(primes, triangle_number) < 500:
     triangle_number += n
 
 print(triangle_number)
+print("----")

@@ -12,3 +12,4 @@ for i in range(0, 1000 - n + 1):
         answer = p
 
 print(answer)
+print("----")

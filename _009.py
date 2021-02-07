@@ -17,4 +17,5 @@ for a in range(1, N):
         c = bin_search(squares, 0, len(squares) - 1, c2)
         if c >= 0 and (a + b + c) == 1000:
             print(a * b * c)
+            print("----")
             exit(0)

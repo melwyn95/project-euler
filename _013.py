@@ -136,3 +136,4 @@ import functools
 s = functools.reduce(big_add, numbers, zero)
 
 print("".join(map(str, s[:10])))
+print("----")

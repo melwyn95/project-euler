@@ -68,3 +68,4 @@ for i in range(20):
         if nw > answer: answer = nw
 
 print(answer)
+print("----")

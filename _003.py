@@ -25,3 +25,4 @@ for p in primes:
         X = X // p
 
 print(largest)
+print("----")

@@ -50,4 +50,4 @@ def to_words(n):
 N = 1000
 
 print(sum([len(to_words(i)) for i in range(1, N + 1)]))
-
+print("----")

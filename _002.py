@@ -15,3 +15,4 @@ while fib[count - 1] <= N:
     count += 1 
 
 print(answer)
+print("----")

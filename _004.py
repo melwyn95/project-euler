@@ -11,3 +11,4 @@ for a in range(999, 99, -1):
             answer = n
 
 print(answer)
+print("----")
