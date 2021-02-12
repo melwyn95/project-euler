@@ -1,11 +1,15 @@
+import math
+
 N = 10000
 
 def divisors(n):
-    d = []
-    for x in range(n//2, 0, -1):
-        if n % x == 0:
-            d.append(x)
-    return d
+    ds = []
+    for d in range(1, int(math.sqrt(n)) + 1):
+        if n % d == 0: 
+            ds.append(d)
+            x = n // d
+            if x != d and x != n: ds.append(x)
+    return ds
 
 amicable_numbers = set()
 
