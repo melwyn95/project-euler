@@ -103,35 +103,10 @@ numbers = [
 
 numbers = [list(map(int, list(n))) for n in numbers]
 
-def big_add(a, b):
-    c = 0
-    an, bn = len(a) - 1, len(b) - 1
-    x = []
-    while an >= 0 and bn >= 0:
-        s = a[an] + b[bn] + c
-        if s > 9: c = s // 10
-        else: c = 0
-        x.append(s % 10)
-        an -= 1
-        bn -= 1
-    while an >= 0:
-        s = a[an] + c
-        if s > 9: c = s // 10
-        else: c = 0
-        x.append(s % 10)
-        an -= 1
-    while bn >= 0:
-        s = b[bn] + c
-        if s > 9: c = s // 10
-        else: c = 0
-        x.append(s % 10)
-        bn -= 1 
-    if c > 0: x.append(c)
-    return list(reversed(x))
-
 zero = [0 for _ in range(50)]
 
 import functools
+from utils import big_add
 
 s = functools.reduce(big_add, numbers, zero)
 
