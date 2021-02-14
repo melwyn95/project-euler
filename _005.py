@@ -16,4 +16,3 @@ import functools
 answer = functools.reduce(lambda x, y: x*y, xs, 1)
 
 print(answer)
-print("----")

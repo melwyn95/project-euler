@@ -52,4 +52,3 @@ def max_path_sum(node, s):
 print(max_path_sum(tree, 0))
 
 print(answer)
-print("----")

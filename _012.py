@@ -1,23 +1,18 @@
-from utils import seive
+import math
 
-primes = seive(1000000)
-
-def count_divisors(primes, n):
-    count = 1
-    for p in primes:
-        if p > n: break
-        n_, c = n, 0
-        while n_ > 1 and n_ % p == 0:
-            n_ = n_ // p
-            c += 1
-        if c > 0: count *= (c + 1)
-    return count
+def divisors(n):
+    ds = []
+    for d in range(1, int(math.sqrt(n)) + 1):
+        if n % d == 0: 
+            ds.append(d)
+            x = n // d
+            if x != d: ds.append(x)
+    return ds
 
 n = 1
 triangle_number = 1
-while count_divisors(primes, triangle_number) < 500:
+while len(divisors(triangle_number)) < 500:
     n += 1
     triangle_number += n
 
 print(triangle_number)
-print("----")

@@ -6,4 +6,3 @@ primes = seive(N)
 answer = sum(primes)
 
 print(answer)
-print("----")

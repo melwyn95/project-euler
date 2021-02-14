@@ -8,4 +8,3 @@ for _ in range(N): answer = big_multiply(answer, [2])
 
 
 print(sum(answer))
-print("----")

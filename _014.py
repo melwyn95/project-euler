@@ -23,4 +23,3 @@ N = 1000000
 for n in range(1, N): collatz_term(n, 1, memo)
 
 print(answer)
-print("----")

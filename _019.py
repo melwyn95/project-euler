@@ -43,4 +43,3 @@ while not is_done(sunday):
     if sunday[0] == 1: count += 1
 
 print(count)
-print("----")

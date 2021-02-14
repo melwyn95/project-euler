@@ -6,4 +6,3 @@ def factorial(n):
     return big_multiply(n_list, factorial(n-1))
 
 print(sum(factorial(100)))
-print("----")

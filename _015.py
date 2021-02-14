@@ -16,4 +16,3 @@ def explore(n):
 for i in range(1, N + 1): explore(i)
 
 print(grid[N][N])
-print("----")
