@@ -62,3 +62,25 @@ def is_prime(n):
         if n % i == 0: return False
         i += 1
     return True
+
+def digits(n):
+    if n == 0: return [0]
+    ds = []
+    while n > 0:
+        ds.append(n % 10)
+        n //= 10
+    return list(reversed(ds))
+
+def big_num_to_string(bn):
+    return "".join(map(str, bn))
+
+def fast_power(a, n):
+    if n == 0: return 1
+    if n == 1: return a
+    if n % 2 == 0:
+        p = fast_power(a, n // 2)
+        return p * p
+    else:
+        p = fast_power(a, (n - 1) // 2)
+        return p * p * a
+        
