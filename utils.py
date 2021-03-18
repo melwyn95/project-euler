@@ -84,3 +84,10 @@ def fast_power(a, n):
         p = fast_power(a, (n - 1) // 2)
         return p * p * a
         
+def bin_search(a, s, e, x):
+    if s <= e:
+        m = (s + e) // 2
+        if a[m] == x: return m
+        elif x > a[m]: return bin_search(a, m + 1, e, x)
+        else: return bin_search(a, s, m - 1, x) 
+    return -1

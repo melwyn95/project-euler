@@ -1,15 +1,8 @@
+from utils import bin_search
+
 N = 1000
 
 squares = [x ** 2 for x in range(N + 1)]
-
-
-def bin_search(a, s, e, x):
-    if s <= e:
-        m = (s + e) // 2
-        if a[m] == x: return m
-        elif x > a[m]: return bin_search(a, m + 1, e, x)
-        else: return bin_search(a, s, m - 1, x) 
-    return -1
 
 for a in range(1, N):
     for b in range(a + 1, N):
