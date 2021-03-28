@@ -91,3 +91,7 @@ def bin_search(a, s, e, x):
         elif x > a[m]: return bin_search(a, m + 1, e, x)
         else: return bin_search(a, s, m - 1, x) 
     return -1
+
+def last(xs):
+    length = len(xs)
+    return xs[length - 1]
