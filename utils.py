@@ -95,3 +95,15 @@ def bin_search(a, s, e, x):
 def last(xs):
     length = len(xs)
     return xs[length - 1]
+
+def permute(xs):
+    if len(xs) == 1:
+        return [xs[0]]
+    else:
+        zs = []
+        for i in range(len(xs)):
+            x = xs[i]
+            ys = list(xs[0:i] + xs[i+1:])
+            xs_ = permute(ys)
+            zs += list(map(lambda x_: x + x_, xs_))
+        return zs
