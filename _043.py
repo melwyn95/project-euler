@@ -1,5 +1,7 @@
 from utils import permute
 
+# TODO: implement permute in a faster way
+
 primes = [2, 3, 5, 7, 11, 13, 17]
 def are_substrings_divisible(s):
     if s[0] == "0": return False
