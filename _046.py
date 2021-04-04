@@ -8,10 +8,11 @@ for p in primes: numbers[p] = False
 sq2 = [2 * x * x for x in range(1, 1000)]
 for p in primes:
     for sq in sq2:
-        if p + sq < N:
-            numbers[p + sq] = False
+        n = p + sq
+        if n > N: break
+        numbers[n] = False
 
-for i in range(N):
+for i in range(3, N, 2):
     if numbers[i]: 
         print(i)
         break
