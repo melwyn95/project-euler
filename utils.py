@@ -71,6 +71,13 @@ def digits(n):
         n //= 10
     return list(reversed(ds))
 
+def digits_to_int(ds):
+    n, i = 0, 1
+    for d in range(len(ds) - 1, -1, -1):
+        n += ds[d] * i
+        i *= 10
+    return n
+
 def big_num_to_string(bn):
     return "".join(map(str, bn))
 
