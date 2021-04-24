@@ -51,4 +51,4 @@ def trunc_pow(x, n):
 pows = []
 for n in range(N + 1): pows.append(list(reversed(trunc_pow(n, n))))
 answer = digits_to_int(trunc_add(pows))
-print(answer == 9110846700)
+print(answer)
