@@ -57,7 +57,7 @@ def how_many_prime(numbers):
         if first == -1 and _numbers[n]: first = n
     return p, first
 
-for n in range(1, MILLION, 2):
+for n in primes:
     for indices in indices_to_replace(n):
         numbers = replace_indices(indices, n)
         p, smallest = how_many_prime(numbers)
