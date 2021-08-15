@@ -1,3 +1,5 @@
+(* https://projecteuler.net/problem=54 *)
+
 type suit = Heart | Diamond | Club | Spade
 
 type value = Value of int | Jack | King | Queen | Ace
@@ -19,28 +21,7 @@ type rank = [
   | `StraightFlush
   | `RoyalFlush]
 
-(* let pp_value =
-  function
-    Value n -> "Value (" ^ string_of_int n ^ ") "
-  | Jack -> "Jack"
-  | King -> "King"
-  | Queen -> "Queen"
-  | Ace -> "Ace"
-
-let rec pp_rank (rank : rank) = 
-  match rank with
-    `HighCard v -> "HighCard (" ^ pp_value v ^ ") "
-  | `OnePair v -> "OnePair (" ^ pp_value v ^ ") "
-  | `TwoPairs (v1, v2) -> "TwoPairs (" (* ^ pp_rank v1 ^ ", " ^ pp_rank v2 ^ ") "*)
-  | `ThreeKind v -> "ThreeKind (" ^ pp_value v ^ ") "
-  | `Straight -> "Straight"
-  | `Flush -> "Flush"
-  | `FullHouse (v1, v2) -> "FullHouse (" (* ^ pp_rank v1 ^ ", " ^ pp_rank v2 ^ ") "*)
-  | `FourKind v -> "FourKind (" ^ pp_value v ^ ") "
-  | `StraightFlush -> "StraightFlush"
-  | `RoyalFlush -> "RoyalFlush" *)
-  
-let compare_values x y = 
+let max_card x y = 
   match (x, y) with
   | (Value x), (Value y) -> if x > y then (Value x) else (Value y)
   | Jack, (Value _ | Jack)
@@ -78,7 +59,7 @@ let is_royal_flush cards =
   | _ -> false
 
 let high_card cards = 
-  List.fold_left compare_values (Value 0) @@ List.map snd cards;;
+  List.fold_left max_card (Value 0) @@ List.map snd cards;;
 
 let card_occurances cards = List.fold_left 
     (fun (assoc : (value * int) list) (_, (value : value )) -> 
@@ -97,8 +78,8 @@ let int_card_value =
   function
     Value n -> n
   | Jack -> 11
-  | King -> 12
-  | Queen -> 13
+  | Queen -> 12
+  | King -> 13
   | Ace -> 14
       
 
@@ -133,10 +114,12 @@ let rank_cards cards : rank =
     | 5 -> `HighCard (high_card cards)
     | _ -> failwith "card_occs invalid length";; 
         
+let sort_cards = 
+  List.sort (fun (_, v1) (_, v2) -> Stdlib.compare (int_card_value v1) (int_card_value v2))
 let separate xs = 
   let rec aux n xs ys = 
     if n = 0
-    then (List.rev xs, ys)
+    then (sort_cards xs, sort_cards ys)
     else 
       match ys with
       | y :: ys -> aux (n - 1) (y :: xs) ys
@@ -189,11 +172,13 @@ let compare_ranks r1 r2 xs ys =
       then compare_lists xs ys
       else false
     else false
+  
   | `RoyalFlush, `RoyalFlush 
   | `StraightFlush, `StraightFlush
   | `Flush, `Flush
   | `Straight, `Straight -> 
     compare_lists xs ys
+
   | `OnePair v1, `OnePair v2
   | `HighCard v1, `HighCard v2
   | `FourKind v1, `FourKind v2
@@ -214,15 +199,7 @@ let compare_ranks r1 r2 xs ys =
   | `OnePair _, (`TwoPairs _ | `ThreeKind _ | `Straight | `Flush | `FullHouse _ | `FourKind _ | `StraightFlush) 
   | `HighCard _, _ -> false
 
-  | `RoyalFlush, _
-  | `StraightFlush, _ 
-  | `FourKind _, _ 
-  | `FullHouse _, _ 
-  | `Flush, _
-  | `Straight, _ 
-  | `ThreeKind _, _
-  | `TwoPairs _, _ 
-  | `OnePair _, _ -> true
+  | _ -> true
   
 let parse_line s = 
   let ss = String.split_on_char ' ' s in
@@ -252,4 +229,3 @@ let read_file_lines filename =
 let answer = List.fold_left (fun acc line -> acc + parse_line line) 0 @@ read_file_lines "./inputs/_054" ;;
 
 print_endline (string_of_int answer);
-
