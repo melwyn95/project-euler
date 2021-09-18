@@ -131,4 +131,5 @@ dmypy.json
 *.cmi
 *.cmx
 *.o
+*.cmo
 a.out
