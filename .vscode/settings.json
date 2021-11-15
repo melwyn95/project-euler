@@ -1,0 +1,6 @@
+{
+    "ocaml.sandbox": {
+        "kind": "custom",
+    "template": "opam exec --switch /home/melwyn95/projects/project-euler -- $prog $args"
+    }
+}

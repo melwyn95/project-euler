@@ -133,3 +133,5 @@ dmypy.json
 *.o
 *.cmo
 a.out
+
+_opam/
